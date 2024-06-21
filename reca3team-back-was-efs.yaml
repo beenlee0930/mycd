@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reca3team-was-efs
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: was-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: was-server
+  template:
+    metadata:
+      labels:
+        app: was-server
+    spec:
+      containers:
+      - name: reca3team-was-server
+        image: 447079561480.dkr.ecr.ap-northeast-2.amazonaws.com/reca3team-ecr:RECA3team-ecr-tomcat-image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: persistent-storage
+          mountPath: /data
+      volumes:
+      - name: persistent-storage
+        persistentVolumeClaim:
+          claimName: reca3team-was-efs

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - name: reca3team-web-server
+          image: 447079561480.dkr.ecr.ap-northeast-2.amazonaws.com/reca3team-ecr:RECA3team-ecr-nginx-image
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
