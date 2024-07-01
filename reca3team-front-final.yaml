@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
         - name: reca3team-web-server
-          image: 447079561480.dkr.ecr.ap-northeast-2.amazonaws.com/reca3team-ecr:RECA3team-ecr-nginx-image
+          image: beenlee0930/mycicd-nginx
           imagePullPolicy: Always
           ports:
             - containerPort: 80
