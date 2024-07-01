@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: reca3team-was-server
-        image: 447079561480.dkr.ecr.ap-northeast-2.amazonaws.com/reca3team-ecr:RECA3team-ecr-tomcat-image
+        image: beenlee0930/mycicd-tomcat
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
