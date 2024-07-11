@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sol03-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:381491941914:certificate/e1d16aa7-1f87-4891-a76f-eff5343974db"
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: www.soldeskcerts.store
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sol03-web-server
+                port:
+                  number: 80
