@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/use-regex: "true"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:381491941914:certificate/e1d16aa7-1f87-4891-a76f-eff5343974db"
+    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:381491941914:certificate/842bfa54-3c9e-444f-9e32-3da55eea4c01"
     alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
   ingressClassName: nginx
