@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: efs-sc
+parameters:
+  directoryPerms: "700"
+  fileSystemId: fs-03620a3b6d6550b64
+  provisioningMode: efs-ap
+provisioner: efs.csi.aws.com # EFS-CSI 드라이버 선택 
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
